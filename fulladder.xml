@@ -1,0 +1,48 @@
+
+
+
+
+
+
+
+
+
+         <TuringMachine name="Full Adder mod">
+    <!--Read Write head, Blank used in tape-->
+
+    <IOTape head=">" blank="_"
+        format = ">KS~ABC : KS = A+B+C for binary number">
+        >11111111111111111
+    </IOTape>
+
+    <!--(present state, input):(next state, output, headmove)-->
+    <!-- RW head move left or Right, Blank, special symbol used for program-->
+    <ProgramTape start="S" halt="H"
+      left="L" right="R" blank="_">
+    {
+        (S,0):(S,0,R),
+(S,1):(Q1,#,L),
+(S,_):(Q4,_,   L),
+(Q1,0):(Q1,0,L),
+(Q1,_):(Q2,   ~,L),
+(Q1,~):(Q2,~,L),
+(Q1,1):(Q1,1,L),
+(Q2,0 ):  (Q3,  1,R),
+(Q2,1):(Q2,0,L),
+(Q2,_):(Q3,1,R),
+(Q3,0):(Q3,0,R),
+(Q3,1):(Q3,1,R),
+(Q3,~):(Q3,~,R),
+(Q3,#):(S,1,R),
+(Q4,0):(Q4,0,L),
+(Q4,1):(Q4,1,L),
+(Q4,~):(Q5,~,L),
+(Q4,_):(Q5,~,L),
+(Q5,0):(H,0,R),
+(Q5,1):(H,1,R),
+(Q5,_):(H,0,R)
+
+
+         }
+    </ProgramTape>
+ </TuringMachine>

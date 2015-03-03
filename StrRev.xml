@@ -1,0 +1,44 @@
+<TuringMachine name = "String Reverse">
+	<!-- Read Write head, Blank used to tape -->
+	<IOTape head = ">" blank = "_"
+		format = ">ab_y : y = reverse of input">
+		>aaabbbabb
+	</IOTape>
+	
+	<!-- (presentState, input):(nextState, output, headMove) -->
+	<!-- RW head move Left or Right, Blank used for program -->
+	<programTape start = "S" halt = "H"
+		left = "L" right = "R" blank = "_" >
+		{
+			(S, a):(S, a, R),
+			(S, b):(S, b, R),
+			(S, _):(1, _, L),
+			
+			(1, _):(H, _, R),
+			(1, a):(2, x, R),
+			(1, b):(3, y, R),
+			
+			(2, a):(2, a, R),
+			(2, b):(2, b, R),
+			(2, _):(4, _, R),
+			
+			(3, a):(3, a, R),
+			(3, b):(3, b, R),
+			(3, _):(5, _, R),
+			
+			(4, a):(4, a, R),
+			(4, b):(4, b, R),
+			(4, _):(6, a, L),
+			
+			(5, a):(5, a, R),
+			(5, b):(5, b, R),
+			(5, _):(6, b, L),
+			
+			(6, a):(6, a, L),
+			(6, b):(6, b, L),
+			(6, _):(6, _, L),
+			(6, x):(1, a, L),
+			(6, y):(1, b, L)
+		}
+	</programTape>
+</TuringMachine>

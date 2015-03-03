@@ -1,0 +1,42 @@
+<TuringMachine name="String Reversal">
+	<!--Read Write head, Blank used in I/O Tape-->
+	<IOTape head=">" blank="_"
+		format=">abab_baba : input_Reversal of input">
+		>ABABAAB
+	</IOTape>
+
+	<!--(Present state,Input):(nextstate,output,overhead)-->
+	<!--RW head move left (or) Right, Blank used for prog-->
+	<ProgramTape start="S" halt="H"
+		left="L" right="R" blank="_">
+	{
+		('S','A'):('S','A','R'),
+		('S','B'):('S','B','R'),
+		('S','_'):('1','_','L'),
+		('1','B'):('2','#','R'),
+		('1','A'):('3','#','R'),
+		('2','B'):('2','B','R'),
+		('2','A'):('2','A','R'),
+		('2','_'):('4','_','R'),
+		('4','A'):('4','A','R'),
+		('4','B'):('4','B','R'),
+		('4','_'):('6','B','L'),
+		('3','A'):('3','A','R'),
+		('3','B'):('3','B','R'),
+		('3','_'):('5','_','R'),
+		('5','A'):('5','A','R'),
+		('5','B'):('5','B','R'),
+		('5','_'):('7','A','L'),
+		('6','A'):('6','A','L'),
+		('6','B'):('6','B','L'),
+		('6','_'):('6','_','L'),
+		('6','#'):('1','B','L'),
+		('7','A'):('7','A','L'),
+		('7','B'):('7','B','L'),
+		('7','_'):('7','_','L'),
+		('7','#'):('1','A','L'),
+		('1','_'):('H','_','R')
+	}
+	</ProgramTape>
+
+</TuringMachine>
